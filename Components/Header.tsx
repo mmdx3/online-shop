@@ -120,7 +120,7 @@ const Header = () => {
         </div>
 
         {/* Items */}
-        <div className="flex flex-row justify-center items-center w-[430px] h-[24px]    ">
+        <div className="flex flex-row justify-between items-center w-[430px] h-[24px]    ">
           {items.map((item) => (
             <Link
               href={item.href}
