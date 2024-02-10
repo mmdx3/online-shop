@@ -7,11 +7,17 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
   --text-black: #333333;
+  --text-primary: #B88E2F;
 }
 
 @media (min-width: 1536px) {
   .container {
     max-width: 1440px;
-    text-align: center;
+  }
+}
+
+@layer base {
+  .nextbtn {
+    box-shadow: 0px 4px 14px 1px #00000029;
   }
 }
