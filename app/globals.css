@@ -20,4 +20,9 @@
   .nextbtn {
     box-shadow: 0px 4px 14px 1px #00000029;
   }
+
+  .active-img {
+    outline: 2px solid #a5a1a1;
+
+  }
 }

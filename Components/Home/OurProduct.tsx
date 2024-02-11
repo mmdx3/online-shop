@@ -1,6 +1,17 @@
-import Product from "../Product";
+"use client";
+import { useEffect, useState } from "react";
+import ProductCom from "../Product";
+import ISproductService from "@/Types/ProductType";
+import GetProduct from "@/app/service/getProduct";
 
 const OurProduct = () => {
+  const [Product, setProduct] = useState<ISproductService[]>([]);
+  useEffect(() => {
+    GetProduct(location.origin + "/api/product").then((d) =>
+      setProduct(d?.data.data),
+    );
+  }, []);
+
   return (
     <div className="w-[1236px] min-h-[1084px] flex flex-col justify-center items-center gap-[25px] mt-[25px] mx-auto">
       {/* Title */}
@@ -11,7 +22,9 @@ const OurProduct = () => {
       {/* products */}
       <div className="flex flex-row justify-start items-center w-full text-wrap flex-wrap gap-[32px]">
         {/* Product */}
-        <Product />
+        {Product.map((p) => (
+          <ProductCom p={p} key={p.id} />
+        ))}
       </div>
 
       {/* Show More Btn */}

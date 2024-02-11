@@ -3,7 +3,7 @@ export const Product = [
   {
     id: 1,
     picture: img,
-    name: "product",
+    name: "product 1 ",
     create_at: new Date(),
     price: 2500000,
     off: false,
@@ -13,7 +13,7 @@ export const Product = [
   {
     id: 2,
     picture: img,
-    name: "product",
+    name: "product 2 ",
     create_at: new Date(),
     price: 2500000,
     off: false,
@@ -23,7 +23,7 @@ export const Product = [
   {
     id: 3,
     picture: img,
-    name: "product",
+    name: "product 3 ",
     create_at: new Date(),
     price: 2500000,
     off: false,
@@ -33,7 +33,7 @@ export const Product = [
   {
     id: 4,
     picture: img,
-    name: "product",
+    name: "product 4",
     create_at: new Date(),
     price: 2500000,
     off: true,
@@ -43,7 +43,7 @@ export const Product = [
   {
     id: 5,
     picture: img,
-    name: "product",
+    name: "product 5 ",
     create_at: new Date(),
     price: 2500000,
     off: false,
@@ -53,7 +53,7 @@ export const Product = [
   {
     id: 6,
     picture: img,
-    name: "product",
+    name: "product 6 ",
     create_at: new Date(),
     price: 2500000,
     off: false,
@@ -63,7 +63,7 @@ export const Product = [
   {
     id: 7,
     picture: img,
-    name: "product",
+    name: "product 7 ",
     create_at: new Date(),
     price: 2500000,
     off: false,
@@ -73,7 +73,7 @@ export const Product = [
   {
     id: 8,
     picture: img,
-    name: "product",
+    name: "product 8 ",
     create_at: new Date(),
     price: 2500000,
     off: true,
@@ -83,7 +83,7 @@ export const Product = [
   {
     id: 9,
     picture: img,
-    name: "product",
+    name: "product 9 ",
     create_at: new Date(),
     price: 2500000,
     off: false,
