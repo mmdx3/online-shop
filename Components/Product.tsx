@@ -1,10 +1,11 @@
 "use client";
 import { motion } from "framer-motion";
-import ShareIcon from "@/app/assets/svgs/share-svg";
-import CompareIcon from "@/app/assets/svgs/compare";
-import Likeicon from "@/app/assets/svgs/like";
+import ShareIcon from "@/app/assets/icons/svgs/share-svg";
+import CompareIcon from "@/app/assets/icons/svgs/compare";
+import Likeicon from "@/app/assets/icons/svgs/like";
 import Image from "next/image";
 import ISproductService from "@/Types/ProductType";
+import Link from "next/link";
 
 type ButtonType = {
   name: string;
@@ -38,11 +39,14 @@ const Product = ({ p }: { p: ISproductService }) => {
           {/* Buttons */}
           <div className="flex flex-col justify-center items-center gap-[24px] w-full px-[20px]">
             {/* TODO Onclcik Navigate to Cart */}
-            <button className="w-[202px] h-[48px] bg-[#fff] rounded-[3px] flex justify-center items-center text-center ">
-              <h4 className="w-[91px] h-[24px] font-[600] text-[16px] leading-[24px] text-[var(--text-primary)]">
+            <Link
+              href={`/single-product/${p.id}`}
+              className="w-[202px] h-[48px] bg-[#fff] rounded-[3px] flex justify-center items-center text-center "
+            >
+              <button className="w-[91px] h-[24px] font-[600] text-[16px] leading-[24px] text-[var(--text-primary)]">
                 Add to cart
-              </h4>
-            </button>
+              </button>
+            </Link>
 
             {/* icons */}
             <div className="flex flex-row gap-[20px] w-[252px] h-[24px] justify-between items-center ">

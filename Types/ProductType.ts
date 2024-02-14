@@ -7,4 +7,6 @@ export default interface ISproductService {
   off: boolean;
   OfferPercent: number;
   title: string;
+  quantity: number;
+  size: string; 
 }

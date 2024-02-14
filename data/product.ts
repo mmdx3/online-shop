@@ -9,6 +9,8 @@ export const Product = [
     off: false,
     OfferPercent: 0,
     title: "Product Details Details Details Details Details Details ",
+    quantity: 0,
+    size: "l",
   },
   {
     id: 2,
@@ -19,6 +21,8 @@ export const Product = [
     off: false,
     OfferPercent: 0,
     title: "Product Details Details Details Details Details Details ",
+    quantity: 0,
+    size: "l",
   },
   {
     id: 3,
@@ -29,6 +33,8 @@ export const Product = [
     off: false,
     OfferPercent: 0,
     title: "Product Details Details Details Details Details Details ",
+    quantity: 0,
+    size: "l",
   },
   {
     id: 4,
@@ -39,6 +45,8 @@ export const Product = [
     off: true,
     OfferPercent: 10,
     title: "Product Details Details Details Details Details Details ",
+    quantity: 0,
+    size: "l",
   },
   {
     id: 5,
@@ -49,6 +57,8 @@ export const Product = [
     off: false,
     OfferPercent: 0,
     title: "Product Details Details Details Details Details Details ",
+    quantity: 0,
+    size: "l",
   },
   {
     id: 6,
@@ -59,6 +69,8 @@ export const Product = [
     off: false,
     OfferPercent: 0,
     title: "Product Details Details Details Details Details Details ",
+    quantity: 0,
+    size: "l",
   },
   {
     id: 7,
@@ -69,6 +81,8 @@ export const Product = [
     off: false,
     OfferPercent: 0,
     title: "Product Details Details Details Details Details Details ",
+    quantity: 0,
+    size: "l",
   },
   {
     id: 8,
@@ -79,6 +93,8 @@ export const Product = [
     off: true,
     OfferPercent: 20,
     title: "Product Details Details Details Details Details Details ",
+    quantity: 0,
+    size: "l",
   },
   {
     id: 9,
@@ -89,5 +105,7 @@ export const Product = [
     off: false,
     OfferPercent: 0,
     title: "Product Details Details Details Details Details Details ",
+    quantity: 0,
+    size: "l",
   },
 ];

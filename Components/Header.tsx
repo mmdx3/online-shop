@@ -1,7 +1,10 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import Logo from "@/public/assets/Logo/Logo.png";
 import Link from "next/link";
+import CartSideBar from "./CartSideBar";
+import useSideBar from "@/app/utils/useSideBar";
 
 type ItemsType = {
   name: string;
@@ -102,6 +105,13 @@ const Icons: IconsType[] = [
 ];
 
 const Header = () => {
+  const { isOpen, setIsopen, handleopen } = useSideBar();
+
+  const handleClick = (item: IconsType) => {
+    if (item.name === "shopping-cart") {
+      handleopen();
+    }
+  };
   return (
     <header className="container mx-auto h-[100px] flex justify-center items-center ">
       <div className="w-full flex justify-between items-center h-[41px] py-[80px] ">
@@ -136,15 +146,18 @@ const Header = () => {
 
         <div className="flex flex-row justify-center items-center gap-[25px] ">
           {Icons.map((item) => (
-            <Link
-              href={item.href}
+            <div
               key={item.name}
-              className=" h-[24px] font-[500] text-[16px] leading-[24px] capitalize "
+              onClick={() => handleClick(item)}
+              className=" h-[24px] font-[500] text-[16px] leading-[24px] capitalize cursor-pointer"
             >
               {item.svg}
-            </Link>
+            </div>
           ))}
         </div>
+
+        {/* CartSide bar */}
+        <CartSideBar isOpen={isOpen} setOpen={setIsopen} />
       </div>
     </header>
   );

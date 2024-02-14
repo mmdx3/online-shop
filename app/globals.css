@@ -16,6 +16,14 @@
   }
 }
 
+.MuiAutocomplete-hasPopupIcon.css-1h51icj-MuiAutocomplete-root .MuiOutlinedInput-root,
+.MuiAutocomplete-hasClearIcon.css-1h51icj-MuiAutocomplete-root .MuiOutlinedInput-root {
+  width: 453px;
+  height: 75px;
+  outline: none !important;
+  border-radius: 10px;
+}
+
 @layer base {
   .nextbtn {
     box-shadow: 0px 4px 14px 1px #00000029;
@@ -24,5 +32,9 @@
   .active-img {
     outline: 2px solid #a5a1a1;
 
+  }
+
+  .noScroll::-webkit-scrollbar {
+    display: none !important;
   }
 }

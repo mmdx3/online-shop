@@ -24,7 +24,6 @@ const Slider = () => {
         slidesPerView={3}
         grabCursor={true}
         onSlideChange={(swiper) => setSlideActive(swiper.activeIndex)}
-        onSwiper={(swiper) => console.log(swiper)}
       >
         {Array.from(Array(8)).map((i) => (
           <SwiperSlide key={i}>

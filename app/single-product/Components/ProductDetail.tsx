@@ -1,24 +1,80 @@
+import React, { useState } from "react";
+import { useAppSelector } from "@/Redux/Store";
+import { addShopCart } from "@/Redux/reducers/shopCartSlice";
 import ISproductService from "@/Types/ProductType";
 import useNumberWithCommas from "@/app/utils/useNumberWithCommas";
 import { Rating } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 
-const Sizes = ["L", "xl", "xs"];
-const Color = ["#816DFA", "#000000", "#B88E2F"];
+import Swal from "sweetalert2";
+
+const Sizes = ["l", "xl", "xs"];
+
+const Toast = Swal.mixin({
+  toast: true,
+  position: "top-start",
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.onmouseenter = Swal.stopTimer;
+    toast.onmouseleave = Swal.resumeTimer;
+  },
+});
 
 const ProductDetail = ({
   product,
 }: {
   product: ISproductService | undefined;
 }) => {
+  const dispatch = useDispatch();
+  const shopcart = useAppSelector((state) => state.shopCart); // Assuming this selector
+
+  const [selectedSize, setSelectedSize] = useState(Sizes[0]);
+  const [quantity, setQuantity] = useState(0);
+
   const { numberWithCommas } = useNumberWithCommas();
-  const [price, setprice] = useState(0);
   const [active, setActive] = useState(0);
-  const [Number, setNumber] = useState(1);
-  const handleMinesNumber = () => Number !== 0 && setNumber(Number - 1);
-  useEffect(() => {
-    product?.price && setprice(product?.price);
-  });
+
+  const handleSelectSize = (i: number) => {
+    setActive(i);
+    setSelectedSize(Sizes[i]);
+  };
+
+  // Helper functions for quantity management
+  const handleQuantityIncrement = () =>
+    quantity > 0 && setQuantity(quantity + 1);
+  const handleQuantityDecrement = () =>
+    quantity > 1 && setQuantity(quantity - 1);
+
+  // For Add Product Item into shop cart
+  const HandleAddProduct = (item: ISproductService) => {
+    const itemInCart = shopcart.find((i) => i.id === item.id);
+
+
+    let updatedItem;
+
+    if (itemInCart) {
+      setQuantity(quantity + 1);
+      updatedItem = {
+        ...itemInCart,
+        quantity: quantity + 1,
+        size: selectedSize,
+      };
+    } else {
+      setQuantity(quantity + 1);
+      updatedItem = { ...item, quantity: quantity + 1, size: selectedSize };
+    }
+
+    // Dispatch only once after checking if the product exists
+    dispatch(addShopCart(updatedItem));
+
+    Toast.fire({
+      icon: "success",
+      title: "Your Item Added to Shopcart :)",
+    });
+  };
+
   return (
     <div className="w-[606px] h-[730px] flex flex-col justify-start items-start gap-[30px]">
       {/* product Name */}
@@ -64,7 +120,7 @@ const ProductDetail = ({
               className={`size-[30px] rounded-[5px]  flex justify-center items-center cursor-pointer  ${
                 active === i ? "bg-[#B88E2F]" : "bg-[#F9F1E7]"
               }`}
-              onClick={() => setActive(i)}
+              onClick={() => handleSelectSize(i)}
             >
               <h3
                 className={`font-[400] text-[13px] capitalize   ${
@@ -82,14 +138,17 @@ const ProductDetail = ({
         <h3 className="w-[27px] h-[21px] font-[400] text-[14px] text-[#9F9F9F]">
           Color
         </h3>
-        {/* size's */}
+        {/* color's */}
         <div className="flex justify-start items-start gap-[25px]">
-          {Color.map((color, i) => (
-            <div
-              key={i}
-              className={`size-[30px]  flex justify-center items-center cursor-pointer rounded-full bg-[${color}]`}
-            ></div>
-          ))}
+          <div
+            className={`size-[30px]  flex justify-center items-center cursor-pointer rounded-full bg-[#816DFA]`}
+          ></div>
+          <div
+            className={`size-[30px]  flex justify-center items-center cursor-pointer rounded-full bg-[#000000]`}
+          ></div>
+          <div
+            className={`size-[30px]  flex justify-center items-center cursor-pointer rounded-full bg-[#B88E2F]`}
+          ></div>
         </div>
       </div>
 
@@ -100,24 +159,27 @@ const ProductDetail = ({
           {/* mines */}
           <span
             className="w-[9px] h-[24px] font-[400] text-[16px] text-[#000000] cursor-pointer"
-            onClick={handleMinesNumber}
+            onClick={handleQuantityDecrement}
           >
             -
           </span>
           {/* Num */}
           <span className="w-[9px] h-[24px] font-[400] text-[16px] text-[#000000]">
-            {Number}
+            {quantity}
           </span>
           {/* Plus */}
           <span
             className="w-[9px] h-[24px] font-[400] text-[16px] text-[#000000] cursor-pointer"
-            onClick={() => setNumber(Number + 1)}
+            onClick={handleQuantityIncrement}
           >
             +
           </span>
         </div>
         {/* Add To cart */}
-        <div className="w-[215px] h-[64px] rounded-[15px] border border-[#000000] flex justify-center items-center  select-none cursor-pointer ">
+        <div
+          className="w-[215px] h-[64px] rounded-[15px] border border-[#000000] flex justify-center items-center  select-none cursor-pointer "
+          onClick={() => product && HandleAddProduct(product)}
+        >
           <h3 className="font-[400] text-[20px] leading-[30px] text-[#000000]">
             Add To Cart
           </h3>
@@ -129,7 +191,6 @@ const ProductDetail = ({
           </h3>
         </div>
       </div>
-
       {/* Line */}
       <div className="w-[605px] border border-[#D9D9D9] mt-[35px]"></div>
 
