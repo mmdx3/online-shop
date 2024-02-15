@@ -1,8 +1,8 @@
 "use client"
 import React from "react";
-import BreadCrumbs from "@/Components/BreadCrumbs";
+import BreadCrumbs from "@/app/Components/BreadCrumbs";
 import ProductSumury from "./components/productSumury";
-import MainSection from "../../Components/MainSection";
+import MainSection from "@/app/Components/MainSection";
 
 const page = () => {
   return (

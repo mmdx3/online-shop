@@ -1,5 +1,5 @@
-import BreadCrumbs from "@/Components/BreadCrumbs";
-import MainSection from "@/Components/MainSection";
+import BreadCrumbs from "@/app/Components/BreadCrumbs";
+import MainSection from "@/app/Components/MainSection";
 import React from "react";
 import CheckOutDetail from "./components/CheckOutDetail";
 
