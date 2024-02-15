@@ -2,7 +2,7 @@
 import ISproductService from "@/Types/ProductType";
 import GetProduct from "@/app/service/getProduct";
 import React, { useEffect, useState } from "react";
-import ProductCom from "@/Components/Product";
+import ProductCom from "@/app/Components/Product";
 const RelatedProduct = () => {
   const [Product, setProduct] = useState<ISproductService[]>([]);
   useEffect(() => {
