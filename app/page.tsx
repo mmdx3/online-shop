@@ -1,4 +1,3 @@
-import Header from "@/app/Components/Header";
 import HeroSection from "@/app/Components/Home/HeroSection";
 import Main from "@/app/Components/Home/Main";
 import OurProduct from "@/app/Components/Home/OurProduct";
