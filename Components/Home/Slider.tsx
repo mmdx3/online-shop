@@ -1,25 +1,27 @@
 "use client";
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-// Import Swiper styles
-import "swiper/css";
-
+import {  useState } from "react";
 import img from "@/public/assets/images/product.png";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Controller, Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
 
 const Slider = () => {
   const [slideActive, setSlideActive] = useState(0);
-  const [swiper, setswiper] = useState<Element | null>();
-  useEffect(() => {
-    const swiper = document.querySelector(".swiper")?.swiper; 
-    setswiper(swiper);
-  }, []);
+  // const [firstSwiper, setFirstSwiper] = useState();
+  const slidenext = () => {
 
+    // firstSwiper && firstSwiper.slideNext();
+  };
   return (
     <div className="w-[1196px] h-[582px] flex justify-start items-center gap-[20px] relative">
       {/* slider */}
       <Swiper
+        modules={[Controller, Navigation, Pagination]}
+        navigation
+        pagination={{ clickable: true }}
         spaceBetween={20}
         slidesPerView={3}
         grabCursor={true}
@@ -107,7 +109,7 @@ const Slider = () => {
       {/* Next Slide Btn */}
       <div
         className="size-[48px] rounded-full bg-[#FFFFFF] shadow-[0px,4px,14px,1px,#00000029] cursor-pointer absolute top-[38%] right-[395px] flex justify-center items-center z-[2] nextbtn"
-        onClick={() => swiper?.slideNext()}
+        onClick={slidenext}
       >
         {/* Icon */}
         <svg
